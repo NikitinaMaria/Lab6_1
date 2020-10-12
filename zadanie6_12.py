@@ -21,7 +21,6 @@ COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 def new_ball():
     """
     The function draws a new random ball in a random place
-    :return:
     """
     global ball_x, ball_y, ball_r
     ball_x = randint(100, 1100)
@@ -40,7 +39,6 @@ def click(ball_x, ball_y, ball_r):
     :param ball_x: ball coordinate x
     :param ball_y: ball coordinate y
     :param ball_r: ball radius
-    :param points: points per game
     """
 
     # Coordinates of the mouse
