@@ -120,7 +120,7 @@ def click(ball_x, ball_y, ball_r, speed_x, speed_y, color, k, points):
 
     return parameters_for_delete, points
 
-
+# Adding the first balls
 for i in range(count_of_balls):
     parameters_of_one_ball = new_ball()
     balls_parameters.append(parameters_of_one_ball)
@@ -128,6 +128,8 @@ for i in range(count_of_balls):
 
 parameters_for_delete = [[0] * 6] * count_of_balls
 points = 0
+
+# Writing the starting points
 draw_points(points)
 
 while not finished:
@@ -137,18 +139,22 @@ while not finished:
             finished = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for k in range(count_of_balls):
+                # We check whether we hit the ball
                 parameters_for_delete, points = click(*balls_parameters[k], k, points)
-
+                
+    # Remove the balls that hit and add new ones
     for i in range(count_of_balls):
         balls_parameters = delete_ball(*parameters_for_delete[i])
         if len(balls_parameters) < count_of_balls:
             parameters_of_one_ball = new_ball()
             balls_parameters.append(parameters_of_one_ball)
             draw_new_ball(*parameters_of_one_ball)
-
+    
+    # Moving the balls
     for i in range(count_of_balls):
         balls_parameters[i] = balls_move(*balls_parameters[i])
-
+    
+    # Updating points
     draw_points(points)
     pygame.display.update()
 
